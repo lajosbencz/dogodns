@@ -1,0 +1,10 @@
+# DigitalOcean API R+W token
+token: bogus
+# Domain name
+domain: home.example.me
+# Public IP URL
+pip: https://api.ipify.org/?format=raw
+# Record TTL
+ttl: 300
+# Check interval
+interval: 60
