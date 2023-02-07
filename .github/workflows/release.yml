@@ -11,6 +11,7 @@ jobs:
   releases-matrix:
     name: Release Go binary
     runs-on: ubuntu-latest
+    permissions: write-all
     strategy:
       matrix:
         # build and publish in parallel: linux/386, linux/amd64, linux/arm64, windows/386, windows/amd64, darwin/amd64, darwin/arm64
@@ -25,7 +26,6 @@ jobs:
     - uses: actions/checkout@v3
     - uses: wangyoucao577/go-release-action@v1.32
       with:
-        permissions: write-all
         github_token: ${{ secrets.GITHUB_TOKEN }}
         goos: ${{ matrix.goos }}
         goarch: ${{ matrix.goarch }}
