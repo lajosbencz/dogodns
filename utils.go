@@ -12,6 +12,14 @@ func fail(msg any) {
 	os.Exit(-1)
 }
 
+var ErrDOInternal = fmt.Errorf("DO API Internal error")
+
+func errDO(err error) {
+	if err != ErrDOInternal {
+		fail(err)
+	}
+}
+
 func getPublicIP(url string, ipv6 bool) (string, error) {
 	resp, err := http.Get(url)
 	if err != nil {
