@@ -1,10 +1,16 @@
 # DigitalOcean API R+W token
-token: bogus
-# Domain name
+token: <secret>
+
+# Domain names (use either key)
 domain: home.example.me
+domains:
+  - dev.example.me
+
 # Public IP URL
-pip: https://api.ipify.org/?format=raw
+pip: https://ipecho.net/plain
+
 # Record TTL
 ttl: 300
+
 # Check interval
 interval: 60

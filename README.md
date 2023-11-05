@@ -1,46 +1,59 @@
 # DOGODNS
 
-DigitalOcean Dynamic DNS Client
+This app will use the public IP of it's network
+to update the DNS registry of DigitalOcean
 
 ---
 
 ## Usage
 
-### Arguments
+### Run Updater
 
 ```bash
-Usage of dogodns:
-      --domain string   Domain name (default "")
-      --dry             Dry run, dont commit any changes
-      --interval int    Check interval (default 60)
-      --pip string      Public IP fetch URL (default "https://api.ipify.org/?format=raw")
-      --token string    DigitalOcean API R+W token (default "")
-      --ttl int         Record TTL (default 300)
+dogodns service # --config dogodns.yaml
 ```
 
-### Environment variables
+### Available Commands
 
-```
-DOGODNS_TOKEN
-DOGODNS_DOMAIN
-DOGODNS_PIP
-DOGODNS_TTL
-DOGODNS_INTERVAL
+```bash
+Available Commands:
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  init        Creates default config file
+  ip          Prints public IP that will be used for A record updates
+  service     Run the service
+  status      Shows a brief status page
+
+Flags:
+  -c, --config string        Path to config file without extension (default "dogodns.yaml")
+  -d, --domain stringArray   List of domain names
+  -h, --help                 help for dogodns
+  -i, --interval int         Interval between checks (default 60)
+  -p, --pip string           HTTP URL to fetch public IP from (default "https://ipecho.net/plain")
+  -t, --token string         DigitalOcean R+W token
+  -l, --ttl int              Domain record TTL (default 300)
 ```
 
 ### Config file
 
-Located in `/etc/dogodns/dogodns.yaml` or `./dogodns.yaml`
+Located at `./dogodns.yaml` by default
 
 ```yaml
 # DigitalOcean API R+W token
-token: bogus
-# Domain name
+token: <secret>
+
+# Domain names (use either key)
 domain: home.example.me
+domains:
+  - dev.example.me
+
 # Public IP URL
-pip: https://api.ipify.org/?format=raw
+pip: https://ipecho.net/plain
+
 # Record TTL
 ttl: 300
+
 # Check interval
 interval: 60
+
 ```
